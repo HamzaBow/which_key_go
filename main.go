@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	nd := Node{
+	nd := node{
 		name: "Root",
 	}
 	fmt.Println(nd)

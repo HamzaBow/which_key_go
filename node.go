@@ -1,6 +1,6 @@
 package main
 
-type Node struct {
+type node struct {
 	name        string
 	description string
 }
