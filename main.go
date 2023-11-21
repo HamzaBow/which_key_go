@@ -3,5 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello world!")
+	nd := Node{
+		name: "Root",
+	}
+	fmt.Println(nd)
 }
