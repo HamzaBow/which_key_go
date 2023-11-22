@@ -1,29 +1,32 @@
 package main
 
-import "testing"
+import (
+	"testing"
+	"which_key_go/node"
+)
 
 func TestMapDefault(t *testing.T) {
 
-	var rt1 = node{
-		name:        "Root 1",
-		description: "Desc of Root 1",
-		children:    map[rune]node{},
+	var rt1 = node.Node{
+		Name:        "Root 1",
+		Description: "Desc of Root 1",
+		Children:    map[rune]node.Node{},
 	}
-	var rt2 = node{
-		name:        "Root 2",
-		description: "Desc of Root 2",
+	var rt2 = node.Node{
+		Name:        "Root 2",
+		Description: "Desc of Root 2",
 	}
 
-	var x = rt1.children == nil
-	t.Log("rt1.children == nil", x)
+	var x = rt1.Children == nil
+	t.Log("rt1.Children == nil", x)
 
-	var y = rt2.children == nil
-	t.Log("rt2.children == nil", y)
+	var y = rt2.Children == nil
+	t.Log("rt2.Children == nil", y)
 
-	if rt1.children == nil {
-		t.Fatal("children of rt1 is nil, but shouldn't be ")
+	if rt1.Children == nil {
+		t.Fatal("Children of rt1 is nil, but shouldn't be ")
 	}
-	if rt2.children != nil {
-		t.Fatal("children of rt2 isn't nil, but should be")
+	if rt2.Children != nil {
+		t.Fatal("Children of rt2 isn't nil, but should be")
 	}
 }
