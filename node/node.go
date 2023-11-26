@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os/exec"
+	"which_key_go/util"
 )
 
 type Node struct {
@@ -29,7 +30,7 @@ func (nd Node) RunCommand() error {
 }
 
 func (nd Node) PrintSubTree() error {
-
+	util.ClearTerminal()
 	b, err := json.MarshalIndent(nd, "", "\t")
 	if err != nil {
 		return err
