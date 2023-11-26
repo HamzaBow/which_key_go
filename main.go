@@ -1,12 +1,10 @@
 package main
 
-import (
-	"encoding/json"
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	var rt = getDefaultTree()
-	b, _ := json.MarshalIndent(rt, "", "\t")
-	fmt.Println(string(b))
+	rt.PrintSubTree()
+	fmt.Println("-------------------------")
+	rt.Children['a'].PrintSubTree()
 }

@@ -1,7 +1,9 @@
 package node
 
 import (
+	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"os/exec"
 )
@@ -23,5 +25,15 @@ func (nd Node) RunCommand() error {
 	if err != nil {
 		log.Fatal("sddf", err)
 	}
+	return nil
+}
+
+func (nd Node) PrintSubTree() error {
+
+	b, err := json.MarshalIndent(nd, "", "\t")
+	if err != nil {
+		return err
+	}
+	fmt.Println(string(b))
 	return nil
 }
