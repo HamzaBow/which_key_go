@@ -10,14 +10,14 @@ func getDefaultTree() node.Node {
 		Children:    map[rune]node.Node{},
 	}
 	rt.Children['a'] = node.Node{
-		Name:        "Child A",
-		Description: "Desc for Child A",
-		Children:    map[rune]node.Node{},
+		Name:     "Chrome Profile 1",
+		Children: map[rune]node.Node{},
+		Command:  "google-chrome --new-window --profile-directory=\"Profile 1\"",
 	}
 	rt.Children['b'] = node.Node{
-		Name:        "Child B",
-		Description: "Desc for Child B",
-		Children:    map[rune]node.Node{},
+		Name:     "Chrome Profile 2",
+		Children: map[rune]node.Node{},
+		Command:  "google-chrome --new-window --profile-directory=\"Profile 2\"",
 	}
 	return rt
 }
