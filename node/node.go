@@ -11,14 +11,14 @@ type Node struct {
 	Name        string
 	Description string
 	Children    map[rune]Node
-	command     string
+	Command     string
 }
 
-func (nd Node) run_command() error {
-	if nd.command == "" {
+func (nd Node) RunCommand() error {
+	if nd.Command == "" {
 		return errors.New("command is empty")
 	}
-	cmd := exec.Command(nd.command)
+	cmd := exec.Command("bash", "-c", nd.Command)
 	err := cmd.Run()
 	if err != nil {
 		log.Fatal("sddf", err)
