@@ -13,7 +13,7 @@ type Node struct {
 	parent      *Node
 	Name        string
 	Description string
-	Children    map[rune]Node
+	Children    map[string]Node
 	Command     string
 }
 
