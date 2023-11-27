@@ -2,14 +2,12 @@ package node
 
 import (
 	"fmt"
-	"time"
 )
 
 func (nd Node) PromptPrefixNode() {
 
 	if nd.Command != "" {
-		fmt.Println("this is a command, we will execute it in a second:")
-		time.Sleep(time.Second)
+		fmt.Println("Executing command")
 		nd.RunCommand()
 		return
 	}
