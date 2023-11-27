@@ -11,6 +11,7 @@ func (nd Node) PromptPrefixNode() {
 		fmt.Println("this is a command, we will execute it in a second:")
 		time.Sleep(time.Second)
 		nd.RunCommand()
+		return
 	}
 	for k, v := range nd.Children {
 		fmt.Println(k, " -> ", v.Name)
