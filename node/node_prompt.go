@@ -2,9 +2,14 @@ package node
 
 import (
 	"fmt"
+	"which_key_go/util"
 )
 
+var notification = ""
+
 func (nd Node) PromptPrefixNode() {
+	util.ClearTerminal()
+	fmt.Println(notification)
 
 	if nd.Command != "" {
 		fmt.Println("Executing command")
@@ -26,7 +31,7 @@ func (nd Node) PromptPrefixNode() {
 	}
 
 	if len(userInput) != 1 {
-		fmt.Println("key should be of length 1")
+		notification = "key should be of length 1 \n"
 		nd.PromptPrefixNode()
 		return
 	}
@@ -34,7 +39,7 @@ func (nd Node) PromptPrefixNode() {
 	newNode, exists := nd.Children[userInput]
 
 	if !exists {
-		fmt.Println("Key \"", userInput, "\" does't exist")
+		notification = fmt.Sprintln("Key \"", userInput, "\" does't exist")
 		nd.PromptPrefixNode()
 		return
 	}
