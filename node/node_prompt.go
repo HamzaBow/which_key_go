@@ -12,15 +12,6 @@ func (nd Node) PromptPrefixNode() {
 	fmt.Println(notification)
 	fmt.Println("----------------------")
 
-	if nd.Command != "K" {
-		if nd.parent != nil {
-			notification = "Already at root node!"
-			nd.PromptPrefixNode()
-			return
-		}
-		nd.parent.PromptPrefixNode()
-	}
-
 	if nd.Command != "" {
 		fmt.Println("Executing command")
 		nd.RunCommand()
@@ -43,6 +34,18 @@ func (nd Node) PromptPrefixNode() {
 	if len(userInput) != 1 {
 		notification = "key should be of length 1"
 		nd.PromptPrefixNode()
+		return
+	}
+
+	if userInput == "K" {
+		if nd.parent == nil {
+			notification = "Already at root node!"
+			nd.PromptPrefixNode()
+			return
+		}
+		nd := *nd.parent
+		nd.PromptPrefixNode()
+		// nd.PromptPrefixNode()
 		return
 	}
 
