@@ -37,6 +37,11 @@ func (nd Node) PromptPrefixNode() {
 		return
 	}
 
+	if userInput == "q" {
+		fmt.Println("Quitting...")
+		return
+	}
+
 	if userInput == "K" {
 		if nd.parent == nil {
 			notification = "Already at root node!"
