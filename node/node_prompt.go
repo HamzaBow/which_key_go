@@ -10,6 +10,7 @@ var notification = ""
 func (nd Node) PromptPrefixNode() {
 	util.ClearTerminal()
 	fmt.Println(notification)
+	fmt.Println("----------------------")
 
 	if nd.Command != "" {
 		fmt.Println("Executing command")
@@ -31,7 +32,7 @@ func (nd Node) PromptPrefixNode() {
 	}
 
 	if len(userInput) != 1 {
-		notification = "key should be of length 1 \n"
+		notification = "key should be of length 1"
 		nd.PromptPrefixNode()
 		return
 	}
@@ -39,7 +40,7 @@ func (nd Node) PromptPrefixNode() {
 	newNode, exists := nd.Children[userInput]
 
 	if !exists {
-		notification = fmt.Sprintln("Key \"", userInput, "\" does't exist")
+		notification = fmt.Sprint("Key \"", userInput, "\" does't exist")
 		nd.PromptPrefixNode()
 		return
 	}
