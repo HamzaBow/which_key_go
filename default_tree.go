@@ -9,12 +9,18 @@ func getDefaultTree() node.Node {
 		Description: "Desc of Root",
 		Children:    map[string]node.Node{},
 	}
-	rt.AddChild(node.Node{
+	var chromeNode = node.Node{
+		Name:        "Chrome",
+		Description: "Desc of Chrome",
+		Children:    map[string]node.Node{},
+	}
+	rt.AddChild(chromeNode, "c")
+	chromeNode.AddChild(node.Node{
 		Name:     "Chrome Profile 1",
 		Children: map[string]node.Node{},
 		Command:  "google-chrome --new-window --profile-directory=\"Profile 1\"",
 	}, "a")
-	rt.AddChild(node.Node{
+	chromeNode.AddChild(node.Node{
 		Name:     "Chrome Profile 2",
 		Children: map[string]node.Node{},
 		Command:  "google-chrome --new-window --profile-directory=\"Profile 2\"",
