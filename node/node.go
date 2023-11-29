@@ -10,11 +10,17 @@ import (
 )
 
 type Node struct {
-	Parent      *Node
+	parent      *Node
 	Name        string
 	Description string
 	Children    map[string]Node
 	Command     string
+}
+
+func (nd Node) AddChild(childNode Node, key string) error {
+	nd.Children[key] = childNode
+	childNode.parent = &nd
+	return nil
 }
 
 func (nd Node) RunCommand() error {

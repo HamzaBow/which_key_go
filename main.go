@@ -1,6 +1,10 @@
 package main
 
+import "fmt"
+
 func main() {
 	var rt = getDefaultTree()
-	rt.PromptPrefixNode()
+	// rt.PromptPrefixNode()
+	var err = rt.PrintSubTree()
+	fmt.Println(err)
 }
