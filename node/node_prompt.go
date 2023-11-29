@@ -12,6 +12,15 @@ func (nd Node) PromptPrefixNode() {
 	fmt.Println(notification)
 	fmt.Println("----------------------")
 
+	if nd.Command != "K" {
+		if nd.parent != nil {
+			notification = "Already at root node!"
+			nd.PromptPrefixNode()
+			return
+		}
+		nd.parent.PromptPrefixNode()
+	}
+
 	if nd.Command != "" {
 		fmt.Println("Executing command")
 		nd.RunCommand()
