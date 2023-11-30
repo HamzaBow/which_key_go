@@ -6,11 +6,17 @@ import (
 )
 
 var notification = ""
+var prevNotif = ""
 
 func (nd Node) PromptPrefixNode() {
 	util.ClearTerminal()
 	fmt.Println(notification)
 	fmt.Println("----------------------")
+
+	if (prevNotif != notification) && notification != "" {
+		prevNotif = notification
+		notification = ""
+	}
 
 	if nd.Command != "" {
 		fmt.Println("Executing command")
@@ -38,6 +44,7 @@ func (nd Node) PromptPrefixNode() {
 	// }
 
 	if len(char) != 1 {
+		prevNotif = notification
 		notification = "key should be of length 1"
 		nd.PromptPrefixNode()
 		return
@@ -50,6 +57,7 @@ func (nd Node) PromptPrefixNode() {
 
 	if char == "K" {
 		if nd.parent == nil {
+			prevNotif = notification
 			notification = "Already at root node!"
 			nd.PromptPrefixNode()
 			return
@@ -63,6 +71,7 @@ func (nd Node) PromptPrefixNode() {
 	newNode, exists := nd.Children[char]
 
 	if !exists {
+		prevNotif = notification
 		notification = fmt.Sprint("Key \"", char, "\" does't exist")
 		nd.PromptPrefixNode()
 		return
