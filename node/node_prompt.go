@@ -10,13 +10,8 @@ var prevNotif = ""
 
 func (nd Node) PromptPrefixNode() {
 	util.ClearTerminal()
-	fmt.Println(notification)
+	fmt.Println("path")
 	fmt.Println("----------------------")
-
-	if (prevNotif != notification) && notification != "" {
-		prevNotif = notification
-		notification = ""
-	}
 
 	if nd.Command != "" {
 		fmt.Println("Executing command")
@@ -34,6 +29,13 @@ func (nd Node) PromptPrefixNode() {
 	fmt.Print(lineBreaks)
 
 	fmt.Println("----------------------")
+
+	fmt.Println(notification)
+
+	if (prevNotif != notification) && notification != "" {
+		prevNotif = notification
+		notification = ""
+	}
 	fmt.Print("Enter key: ")
 
 	var char = string(util.ReadRune())
