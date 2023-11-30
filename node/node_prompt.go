@@ -51,7 +51,7 @@ func (nd Node) PromptPrefixNode() {
 	}
 
 	if char == "q" {
-		fmt.Println("Quitting...")
+		fmt.Println("\nQuitting...")
 		return
 	}
 
