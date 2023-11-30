@@ -10,9 +10,9 @@ import (
 var style = lipgloss.NewStyle().
 	Bold(true).
 	Foreground(lipgloss.Color("#FAFAFA")).
-	Background(lipgloss.Color("#FF0000"))
-	// PaddingLeft(1).
-	// PaddingRight(1)
+	Background(lipgloss.Color("#FF0000")).
+	PaddingLeft(1).
+	PaddingRight(1)
 	// Background(lipgloss.Color("#7D56F4")).
 	// PaddingTop(2).
 	// Width(22)
@@ -43,7 +43,7 @@ func (nd Node) PromptPrefixNode() {
 	fmt.Println("----------------------")
 
 	if notification != "" {
-		fmt.Println(style.Render(" " + notification + " "))
+		fmt.Println(style.Render(notification))
 	} else {
 
 		fmt.Println()
