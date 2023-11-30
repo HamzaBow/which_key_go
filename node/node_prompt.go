@@ -20,6 +20,12 @@ func (nd Node) PromptPrefixNode() {
 	for k, v := range nd.Children {
 		fmt.Println("", k, "➞", v.Name)
 	}
+	var diff = 10 - len(nd.Children)
+	lineBreaks := ""
+	for i := 0; i < diff; i++ {
+		lineBreaks += "\n"
+	}
+	fmt.Print(lineBreaks)
 
 	fmt.Println("----------------------")
 	fmt.Print("Enter key: ")
