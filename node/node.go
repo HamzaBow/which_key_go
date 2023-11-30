@@ -17,9 +17,9 @@ type Node struct {
 	Command     string
 }
 
-func (nd *Node) AddChild(childNode *Node, key string) error {
+func (nd Node) AddChild(childNode *Node, key string) error {
 	nd.Children[key] = childNode
-	childNode.parent = nd
+	childNode.parent = &nd
 	return nil
 }
 
