@@ -5,6 +5,8 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+
+	"github.com/eiannone/keyboard"
 )
 
 func ClearTerminal() {
@@ -20,4 +22,12 @@ func ClearTerminal() {
 	default:
 		fmt.Println("Unsupported operating system")
 	}
+}
+
+func ReadRune() rune {
+	char, _, err := keyboard.GetSingleKey()
+	if err != nil {
+		panic(err)
+	}
+	return char
 }

@@ -23,26 +23,25 @@ func (nd Node) PromptPrefixNode() {
 
 	fmt.Print("Enter key: ")
 
-	var userInput string
-	_, err := fmt.Scanln(&userInput)
+	var char = string(util.ReadRune())
 
-	if err != nil {
-		fmt.Println("Error reading input:", err)
-		return
-	}
+	// if err != nil {
+	// 	fmt.Println("Error reading input:", err)
+	// 	return
+	// }
 
-	if len(userInput) != 1 {
+	if len(char) != 1 {
 		notification = "key should be of length 1"
 		nd.PromptPrefixNode()
 		return
 	}
 
-	if userInput == "q" {
+	if char == "q" {
 		fmt.Println("Quitting...")
 		return
 	}
 
-	if userInput == "K" {
+	if char == "K" {
 		if nd.parent == nil {
 			notification = "Already at root node!"
 			nd.PromptPrefixNode()
@@ -54,10 +53,10 @@ func (nd Node) PromptPrefixNode() {
 		return
 	}
 
-	newNode, exists := nd.Children[userInput]
+	newNode, exists := nd.Children[char]
 
 	if !exists {
-		notification = fmt.Sprint("Key \"", userInput, "\" does't exist")
+		notification = fmt.Sprint("Key \"", char, "\" does't exist")
 		nd.PromptPrefixNode()
 		return
 	}
