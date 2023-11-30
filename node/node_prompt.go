@@ -3,7 +3,19 @@ package node
 import (
 	"fmt"
 	"which_key_go/util"
+
+	"github.com/charmbracelet/lipgloss"
 )
+
+var style = lipgloss.NewStyle().
+	Bold(true).
+	Foreground(lipgloss.Color("#FAFAFA")).
+	Background(lipgloss.Color("#FF0000"))
+	// PaddingLeft(1).
+	// PaddingRight(1)
+	// Background(lipgloss.Color("#7D56F4")).
+	// PaddingTop(2).
+	// Width(22)
 
 var notification = ""
 var prevNotif = ""
@@ -30,7 +42,12 @@ func (nd Node) PromptPrefixNode() {
 
 	fmt.Println("----------------------")
 
-	fmt.Println(notification)
+	if notification != "" {
+		fmt.Println(style.Render(" " + notification + " "))
+	} else {
+
+		fmt.Println()
+	}
 
 	if (prevNotif != notification) && notification != "" {
 		prevNotif = notification
