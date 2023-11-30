@@ -21,6 +21,7 @@ func (nd Node) PromptPrefixNode() {
 		fmt.Println(k, " -> ", v.Name)
 	}
 
+	fmt.Println("----------------------")
 	fmt.Print("Enter key: ")
 
 	var char = string(util.ReadRune())
