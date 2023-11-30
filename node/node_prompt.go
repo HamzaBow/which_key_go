@@ -18,7 +18,7 @@ func (nd Node) PromptPrefixNode() {
 		return
 	}
 	for k, v := range nd.Children {
-		fmt.Println(k, " -> ", v.Name)
+		fmt.Println("", k, "➞", v.Name)
 	}
 
 	fmt.Println("----------------------")
