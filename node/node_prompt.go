@@ -91,7 +91,7 @@ func (nd Node) PromptPrefixNode() {
 
 func printChildrenPairs(nd Node) {
 
-	Display()
+	nd.Display()
 
 	for k, v := range nd.Children {
 		fmt.Println("", k, "➞", v.Name)
