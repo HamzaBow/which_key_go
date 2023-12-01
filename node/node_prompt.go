@@ -27,9 +27,7 @@ func (nd Node) PromptPrefixNode() {
 		nd.RunCommand()
 		return
 	}
-	for k, v := range nd.Children {
-		fmt.Println("", k, "➞", v.Name)
-	}
+	printChildrenPairs(nd)
 	var diff = 10 - len(nd.Children)
 	lineBreaks := ""
 	for i := 0; i < diff; i++ {
@@ -89,4 +87,11 @@ func (nd Node) PromptPrefixNode() {
 
 	newNode.PromptPrefixNode()
 
+}
+
+func printChildrenPairs(nd Node) {
+
+	for k, v := range nd.Children {
+		fmt.Println("", k, "➞", v.Name)
+	}
 }
