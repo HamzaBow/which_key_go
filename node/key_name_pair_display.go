@@ -33,7 +33,8 @@ func Display() {
 	s.Header = s.Header.
 		BorderStyle(lipgloss.NormalBorder()).
 		BorderForeground(lipgloss.Color("240")).
-		BorderBottom(true)
+		BorderBottom(true).
+		BorderTop(true)
 	s.Selected = s.Selected.
 		Foreground(lipgloss.Color("250"))
 	t.SetStyles(s)
