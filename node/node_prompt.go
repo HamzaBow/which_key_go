@@ -13,9 +13,6 @@ var style = lipgloss.NewStyle().
 	Background(lipgloss.Color("#FF0000")).
 	PaddingLeft(1).
 	PaddingRight(1)
-	// Background(lipgloss.Color("#7D56F4")).
-	// PaddingTop(2).
-	// Width(22)
 
 var notification = ""
 var prevNotif = ""
@@ -57,11 +54,6 @@ func (nd Node) PromptPrefixNode() {
 
 	var char = string(util.ReadRune())
 
-	// if err != nil {
-	// 	fmt.Println("Error reading input:", err)
-	// 	return
-	// }
-
 	if len(char) != 1 {
 		prevNotif = notification
 		notification = "key should be of length 1"
@@ -83,7 +75,6 @@ func (nd Node) PromptPrefixNode() {
 		}
 		nd := *nd.parent
 		nd.PromptPrefixNode()
-		// nd.PromptPrefixNode()
 		return
 	}
 
