@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/charmbracelet/bubbles/table"
+	"github.com/charmbracelet/lipgloss"
 )
 
 func Display() {
@@ -28,7 +29,14 @@ func Display() {
 		table.WithFocused(false),
 		table.WithHeight(7),
 	)
+	s := table.DefaultStyles()
+	s.Header = s.Header.
+		BorderStyle(lipgloss.NormalBorder()).
+		BorderForeground(lipgloss.Color("240")).
+		BorderBottom(true)
+	s.Selected = s.Selected.
+		Foreground(lipgloss.Color("250"))
+	t.SetStyles(s)
 
-	// I want to print this table
 	fmt.Println(t.View())
 }
