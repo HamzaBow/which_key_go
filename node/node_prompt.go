@@ -7,6 +7,13 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
+type PathElement struct {
+	Key  string
+	Name string
+}
+
+var path = []PathElement{}
+
 var keyStyle = lipgloss.NewStyle().
 	Foreground(lipgloss.Color("#00FF00"))
 
@@ -28,7 +35,7 @@ var prevNotif = ""
 
 func (nd Node) PromptPrefixNode() {
 	util.ClearTerminal()
-	fmt.Println("path")
+	fmt.Println(path)
 	fmt.Println("----------------------")
 
 	if nd.Command != "" {
@@ -81,6 +88,7 @@ func (nd Node) PromptPrefixNode() {
 			return
 		}
 		nd := *nd.parent
+		path = path[:len(path)-1]
 		nd.PromptPrefixNode()
 		return
 	}
@@ -94,6 +102,7 @@ func (nd Node) PromptPrefixNode() {
 		return
 	}
 
+	path = append(path, PathElement{Key: char, Name: newNode.Name})
 	newNode.PromptPrefixNode()
 
 }
