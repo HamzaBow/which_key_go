@@ -9,12 +9,18 @@ func getDefaultTree() node.Node {
 		Description: "Desc of Root",
 		Children:    map[string]*node.Node{},
 	}
+	var browserNode = node.Node{
+		Name:        "Browser",
+		Description: "Desc of Browser",
+		Children:    map[string]*node.Node{},
+	}
+	rt.AddChild(&browserNode, "b")
 	var chromeNode = node.Node{
 		Name:        "Chrome",
 		Description: "Desc of Chrome",
 		Children:    map[string]*node.Node{},
 	}
-	rt.AddChild(&chromeNode, "c")
+	browserNode.AddChild(&chromeNode, "c")
 	chromeNode.AddChild(&node.Node{
 		Name:     "Chrome Profile 1",
 		Children: map[string]*node.Node{},
