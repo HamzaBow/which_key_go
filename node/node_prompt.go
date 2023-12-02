@@ -11,10 +11,10 @@ var keyStyle = lipgloss.NewStyle().
 	Foreground(lipgloss.Color("#00FF00"))
 
 var prefixStyle = lipgloss.NewStyle().
-	Foreground(lipgloss.Color("#0000FF"))
+	Foreground(lipgloss.Color("#2680d9"))
 
 var commandStyle = lipgloss.NewStyle().
-	Foreground(lipgloss.Color("#FFFF00"))
+	Foreground(lipgloss.Color("#d9d9268"))
 
 var errorStyle = lipgloss.NewStyle().
 	Bold(true).
