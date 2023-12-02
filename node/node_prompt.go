@@ -8,10 +8,13 @@ import (
 )
 
 var keyStyle = lipgloss.NewStyle().
-	Foreground(lipgloss.Color("#FFFF00"))
+	Foreground(lipgloss.Color("#00FF00"))
 
 var prefixStyle = lipgloss.NewStyle().
 	Foreground(lipgloss.Color("#0000FF"))
+
+var commandStyle = lipgloss.NewStyle().
+	Foreground(lipgloss.Color("#FFFF00"))
 
 var errorStyle = lipgloss.NewStyle().
 	Bold(true).
@@ -100,6 +103,13 @@ func printChildrenPairs(nd Node) {
 	// nd.Display()
 
 	for k, v := range nd.Children {
-		fmt.Println("", keyStyle.Render(k), "➞", prefixStyle.Render(v.Name))
+		var formattedName string
+		if v.Command == "" {
+			formattedName = prefixStyle.Render(v.Name)
+		} else {
+			formattedName = commandStyle.Render(v.Name)
+
+		}
+		fmt.Println("", keyStyle.Render(k), "➞", formattedName)
 	}
 }
