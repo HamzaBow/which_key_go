@@ -10,7 +10,7 @@ import (
 var keyStyle = lipgloss.NewStyle().
 	Foreground(lipgloss.Color("#FFFF00"))
 
-var nameStyle = lipgloss.NewStyle().
+var prefixStyle = lipgloss.NewStyle().
 	Foreground(lipgloss.Color("#0000FF"))
 
 var errorStyle = lipgloss.NewStyle().
@@ -100,6 +100,6 @@ func printChildrenPairs(nd Node) {
 	// nd.Display()
 
 	for k, v := range nd.Children {
-		fmt.Println("", keyStyle.Render(k), "➞", nameStyle.Render(v.Name))
+		fmt.Println("", keyStyle.Render(k), "➞", prefixStyle.Render(v.Name))
 	}
 }
