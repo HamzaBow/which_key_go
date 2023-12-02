@@ -7,7 +7,13 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
-var style = lipgloss.NewStyle().
+var keyStyle = lipgloss.NewStyle().
+	Foreground(lipgloss.Color("#FFFF00"))
+
+var nameStyle = lipgloss.NewStyle().
+	Foreground(lipgloss.Color("#0000FF"))
+
+var errorStyle = lipgloss.NewStyle().
 	Bold(true).
 	Foreground(lipgloss.Color("#FAFAFA")).
 	Background(lipgloss.Color("#FF0000")).
@@ -38,7 +44,7 @@ func (nd Node) PromptPrefixNode() {
 	fmt.Println("----------------------")
 
 	if notification != "" {
-		fmt.Println(style.Render(notification))
+		fmt.Println(errorStyle.Render(notification))
 	} else {
 
 		fmt.Println()
@@ -94,6 +100,6 @@ func printChildrenPairs(nd Node) {
 	// nd.Display()
 
 	for k, v := range nd.Children {
-		fmt.Println("", k, "➞", v.Name)
+		fmt.Println("", keyStyle.Render(k), "➞", nameStyle.Render(v.Name))
 	}
 }
