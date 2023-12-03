@@ -3,6 +3,10 @@ package node
 import "fmt"
 
 func printPath(path []PathElement) {
+	if len(path) == 0 {
+		fmt.Println(PrefixStyle.Render(" Root"))
+		return
+	}
 	var names = ""
 	var keychain = ""
 	for i, p := range path {
