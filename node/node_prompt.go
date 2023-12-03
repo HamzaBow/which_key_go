@@ -14,11 +14,14 @@ type PathElement struct {
 
 var path = []PathElement{}
 
-var keyStyle = lipgloss.NewStyle().
+var KeyStyle = lipgloss.NewStyle().
 	Foreground(lipgloss.Color("#00FF00"))
 
-var prefixStyle = lipgloss.NewStyle().
+var PrefixStyle = lipgloss.NewStyle().
 	Foreground(lipgloss.Color("#2680d9"))
+
+var GrayStyle = lipgloss.NewStyle().
+	Foreground(lipgloss.Color("#777777"))
 
 var commandStyle = lipgloss.NewStyle().
 	Foreground(lipgloss.Color("#d9d9268"))
@@ -35,7 +38,8 @@ var prevNotif = ""
 
 func (nd Node) PromptPrefixNode() {
 	util.ClearTerminal()
-	fmt.Println(path)
+	// fmt.Println(path)
+	printPath(path)
 	fmt.Println("----------------------")
 
 	if nd.Command != "" {
@@ -114,11 +118,11 @@ func printChildrenPairs(nd Node) {
 	for k, v := range nd.Children {
 		var formattedName string
 		if v.Command == "" {
-			formattedName = prefixStyle.Render(v.Name)
+			formattedName = PrefixStyle.Render(v.Name)
 		} else {
 			formattedName = commandStyle.Render(v.Name)
 
 		}
-		fmt.Println("", keyStyle.Render(k), "➞", formattedName)
+		fmt.Println("", KeyStyle.Render(k), "➞", formattedName)
 	}
 }
