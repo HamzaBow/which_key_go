@@ -8,7 +8,7 @@ func printPath(path []PathElement) {
 		return
 	}
 	var names = ""
-	var keychain = ""
+	var keychain = " "
 	for i, p := range path {
 		keychain += KeyStyle.Render(p.Key)
 		names = names + PrefixStyle.Render(p.Name)
