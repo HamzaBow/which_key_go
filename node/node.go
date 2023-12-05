@@ -10,7 +10,6 @@ import (
 )
 
 type Node struct {
-	parent      *Node
 	Name        string
 	Description string
 	Children    map[string]*Node
