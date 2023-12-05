@@ -36,7 +36,9 @@ var errorStyle = lipgloss.NewStyle().
 var notification = ""
 var prevNotif = ""
 
-func (nd Node) PromptPrefixNode() {
+// TODO: might be better to use *[]Node instead of []Node to
+// prevent copying data unnecessarily
+func (nd Node) PromptPrefixNode(pathStack []*Node) {
 	util.ClearTerminal()
 	// fmt.Println(path)
 	printPath(path)
@@ -75,7 +77,7 @@ func (nd Node) PromptPrefixNode() {
 	if len(char) != 1 {
 		prevNotif = notification
 		notification = "key should be of length 1"
-		nd.PromptPrefixNode()
+		nd.PromptPrefixNode(pathStack)
 		return
 	}
 
@@ -85,15 +87,16 @@ func (nd Node) PromptPrefixNode() {
 	}
 
 	if char == "K" {
-		if nd.parent == nil {
+		if len(pathStack) == 0 {
 			prevNotif = notification
 			notification = "Already at root node!"
-			nd.PromptPrefixNode()
+			nd.PromptPrefixNode(pathStack)
 			return
 		}
-		nd := *nd.parent
 		path = path[:len(path)-1]
-		nd.PromptPrefixNode()
+		parent := pathStack[len(pathStack)-1]
+		pathStack = pathStack[:len(pathStack)-1]
+		parent.PromptPrefixNode(pathStack)
 		return
 	}
 
@@ -102,12 +105,13 @@ func (nd Node) PromptPrefixNode() {
 	if !exists {
 		prevNotif = notification
 		notification = fmt.Sprint("Key \"", char, "\" does't exist")
-		nd.PromptPrefixNode()
+		nd.PromptPrefixNode(pathStack)
 		return
 	}
 
 	path = append(path, PathElement{Key: char, Name: newNode.Name})
-	newNode.PromptPrefixNode()
+	pathStack = append(pathStack, &nd)
+	newNode.PromptPrefixNode(pathStack)
 
 }
 

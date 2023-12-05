@@ -1,8 +1,10 @@
 package main
 
+import "which_key_go/node"
+
 func main() {
 	rt := getDefaultTree()
-	rt.PromptPrefixNode()
+	rt.PromptPrefixNode([]*node.Node{})
 	// serializeTree(rt)
 	// var rt node.Node
 	// treeBytes, err := os.ReadFile("tree.json")
