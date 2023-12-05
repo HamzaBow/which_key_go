@@ -38,7 +38,3 @@ func (nd Node) PrintSubTree() error {
 	fmt.Println(string(b))
 	return nil
 }
-
-func (nd Node) PrintParentName() {
-	fmt.Println(nd.parent.Name)
-}
