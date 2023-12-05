@@ -17,12 +17,6 @@ type Node struct {
 	Command     string
 }
 
-func (nd Node) AddChild(childNode *Node, key string) error {
-	nd.Children[key] = childNode
-	childNode.parent = &nd
-	return nil
-}
-
 func (nd Node) RunCommand() error {
 	if nd.Command == "" {
 		return errors.New("command is empty")
