@@ -36,8 +36,6 @@ var errorStyle = lipgloss.NewStyle().
 var notification = ""
 var prevNotif = ""
 
-// TODO: might be better to use *[]Node instead of []Node to
-// prevent copying data unnecessarily
 func (nd Node) PromptPrefixNode(pathStack []*Node) {
 	util.ClearTerminal()
 	printPath(pathInfo)
