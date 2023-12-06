@@ -2,9 +2,8 @@ package node
 
 import (
 	"fmt"
+	"which_key_go/styles"
 	"which_key_go/util"
-
-	"github.com/charmbracelet/lipgloss"
 )
 
 type PathElement struct {
@@ -13,25 +12,6 @@ type PathElement struct {
 }
 
 var pathInfo = []PathElement{}
-
-var KeyStyle = lipgloss.NewStyle().
-	Foreground(lipgloss.Color("#00FF00"))
-
-var PrefixStyle = lipgloss.NewStyle().
-	Foreground(lipgloss.Color("#2680d9"))
-
-var GrayStyle = lipgloss.NewStyle().
-	Foreground(lipgloss.Color("#777777"))
-
-var commandStyle = lipgloss.NewStyle().
-	Foreground(lipgloss.Color("#d9d9268"))
-
-var errorStyle = lipgloss.NewStyle().
-	Bold(true).
-	Foreground(lipgloss.Color("#FAFAFA")).
-	Background(lipgloss.Color("#FF0000")).
-	PaddingLeft(1).
-	PaddingRight(1)
 
 var notification = ""
 var prevNotif = ""
@@ -57,7 +37,7 @@ func (nd Node) PromptPrefixNode(pathStack []*Node) {
 	util.PrintDivider()
 
 	if notification != "" {
-		fmt.Println(errorStyle.Render(notification))
+		fmt.Println(styles.ErrorStyle.Render(notification))
 	} else {
 
 		fmt.Println()
@@ -113,17 +93,13 @@ func (nd Node) PromptPrefixNode(pathStack []*Node) {
 }
 
 func printChildrenPairs(nd Node) {
-
-	// nd.Display()
-
 	for k, v := range nd.Children {
 		var formattedName string
 		if v.Command == "" {
-			formattedName = PrefixStyle.Render(v.Name)
+			formattedName = styles.PrefixStyle.Render(v.Name)
 		} else {
-			formattedName = commandStyle.Render(v.Name)
-
+			formattedName = styles.CommandStyle.Render(v.Name)
 		}
-		fmt.Println("", KeyStyle.Render(k), "➞", formattedName)
+		fmt.Println("", styles.KeyStyle.Render(k), "➞", formattedName)
 	}
 }
