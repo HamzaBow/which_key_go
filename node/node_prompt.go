@@ -17,9 +17,7 @@ var notification = ""
 var prevNotif = ""
 
 func (nd Node) PromptPrefixNode(pathStack []*Node) {
-	util.ClearTerminal()
-	printPath(pathInfo)
-	util.PrintDivider()
+	promptPrepareAndPrintHeader()
 
 	if nd.Command != "" {
 		fmt.Println("Executing command")
