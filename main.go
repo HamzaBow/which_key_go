@@ -11,11 +11,6 @@ import (
 func main() {
 	rt := startUp()
 	prompt.PromptPrefixNode(*rt, []*node.Node{})
-	// rt := getDefaultTree()
-	// prompt.PromptPrefixNode(rt, []*node.Node{})
-	// serializeTree(rt)
-	// fmt.Println(rt)
-	// rt.PromptPrefixNode()
 }
 
 // func serializeTree(rt node.Node) {
