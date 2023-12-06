@@ -42,7 +42,7 @@ func (nd Node) PromptPrefixNode(pathStack []*Node) {
 	util.ClearTerminal()
 	// fmt.Println(path)
 	printPath(pathInfo)
-	fmt.Println("----------------------")
+	util.PrintDivider()
 
 	if nd.Command != "" {
 		fmt.Println("Executing command")
@@ -57,7 +57,7 @@ func (nd Node) PromptPrefixNode(pathStack []*Node) {
 	}
 	fmt.Print(lineBreaks)
 
-	fmt.Println("----------------------")
+	util.PrintDivider()
 
 	if notification != "" {
 		fmt.Println(errorStyle.Render(notification))

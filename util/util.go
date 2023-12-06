@@ -31,3 +31,7 @@ func ReadRune() rune {
 	}
 	return char
 }
+
+func PrintDivider() {
+	fmt.Println("----------------------")
+}
