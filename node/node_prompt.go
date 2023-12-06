@@ -12,7 +12,7 @@ type PathElement struct {
 	Name string
 }
 
-var path = []PathElement{}
+var pathInfo = []PathElement{}
 
 var KeyStyle = lipgloss.NewStyle().
 	Foreground(lipgloss.Color("#00FF00"))
@@ -41,7 +41,7 @@ var prevNotif = ""
 func (nd Node) PromptPrefixNode(pathStack []*Node) {
 	util.ClearTerminal()
 	// fmt.Println(path)
-	printPath(path)
+	printPath(pathInfo)
 	fmt.Println("----------------------")
 
 	if nd.Command != "" {
@@ -93,7 +93,7 @@ func (nd Node) PromptPrefixNode(pathStack []*Node) {
 			nd.PromptPrefixNode(pathStack)
 			return
 		}
-		path = path[:len(path)-1]
+		pathInfo = pathInfo[:len(pathInfo)-1]
 		parent := pathStack[len(pathStack)-1]
 		pathStack = pathStack[:len(pathStack)-1]
 		parent.PromptPrefixNode(pathStack)
@@ -109,7 +109,7 @@ func (nd Node) PromptPrefixNode(pathStack []*Node) {
 		return
 	}
 
-	path = append(path, PathElement{Key: char, Name: newNode.Name})
+	pathInfo = append(pathInfo, PathElement{Key: char, Name: newNode.Name})
 	pathStack = append(pathStack, &nd)
 	newNode.PromptPrefixNode(pathStack)
 
