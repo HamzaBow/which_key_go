@@ -1,23 +1,19 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
+	"os"
 	"which_key_go/node"
 	"which_key_go/prompt"
 )
 
 func main() {
-	rt := getDefaultTree()
-	prompt.PromptPrefixNode(rt, []*node.Node{})
+	rt := startUp()
+	prompt.PromptPrefixNode(*rt, []*node.Node{})
+	// rt := getDefaultTree()
+	// prompt.PromptPrefixNode(rt, []*node.Node{})
 	// serializeTree(rt)
-	// var rt node.Node
-	// treeBytes, err := os.ReadFile("tree.json")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// err = json.Unmarshal(treeBytes, &rt)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
 	// fmt.Println(rt)
 	// rt.PromptPrefixNode()
 }
@@ -45,3 +41,24 @@ func main() {
 
 // 	fmt.Println("done")
 // }
+
+func startUp() *node.Node {
+
+	var rt node.Node
+	treeBytes, err := os.ReadFile("tree.json")
+	if err != nil {
+		fmt.Println(err)
+		fmt.Println("Creating default tree")
+		dt := getDefaultTree()
+		return &dt
+	}
+	err = json.Unmarshal(treeBytes, &rt)
+	if err != nil {
+		fmt.Println(err)
+		fmt.Println("Creating default tree")
+		dt := getDefaultTree()
+		return &dt
+	}
+	fmt.Println("Using serialized tree")
+	return &rt
+}
