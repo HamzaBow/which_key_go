@@ -40,7 +40,6 @@ var prevNotif = ""
 // prevent copying data unnecessarily
 func (nd Node) PromptPrefixNode(pathStack []*Node) {
 	util.ClearTerminal()
-	// fmt.Println(path)
 	printPath(pathInfo)
 	util.PrintDivider()
 
