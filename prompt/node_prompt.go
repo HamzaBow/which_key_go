@@ -1,7 +1,8 @@
-package node
+package prompt
 
 import (
 	"fmt"
+	"which_key_go/node"
 	"which_key_go/styles"
 	"which_key_go/util"
 )
@@ -16,7 +17,7 @@ var pathInfo = []PathElement{}
 var notification = ""
 var prevNotif = ""
 
-func (nd Node) PromptPrefixNode(pathStack []*Node) {
+func PromptPrefixNode(nd node.Node, pathStack []*node.Node) {
 	promptPrepareAndPrintHeader()
 
 	if nd.Command != "" {
@@ -52,7 +53,7 @@ func (nd Node) PromptPrefixNode(pathStack []*Node) {
 	if len(char) != 1 {
 		prevNotif = notification
 		notification = "key should be of length 1"
-		nd.PromptPrefixNode(pathStack)
+		PromptPrefixNode(nd, pathStack)
 		return
 	}
 
@@ -65,13 +66,13 @@ func (nd Node) PromptPrefixNode(pathStack []*Node) {
 		if len(pathStack) == 0 {
 			prevNotif = notification
 			notification = "Already at root node!"
-			nd.PromptPrefixNode(pathStack)
+			PromptPrefixNode(nd, pathStack)
 			return
 		}
 		pathInfo = pathInfo[:len(pathInfo)-1]
 		parent := pathStack[len(pathStack)-1]
 		pathStack = pathStack[:len(pathStack)-1]
-		parent.PromptPrefixNode(pathStack)
+		PromptPrefixNode(*parent, pathStack)
 		return
 	}
 
@@ -80,17 +81,17 @@ func (nd Node) PromptPrefixNode(pathStack []*Node) {
 	if !exists {
 		prevNotif = notification
 		notification = fmt.Sprint("Key \"", char, "\" does't exist")
-		nd.PromptPrefixNode(pathStack)
+		PromptPrefixNode(nd, pathStack)
 		return
 	}
 
 	pathInfo = append(pathInfo, PathElement{Key: char, Name: newNode.Name})
 	pathStack = append(pathStack, &nd)
-	newNode.PromptPrefixNode(pathStack)
+	PromptPrefixNode(*newNode, pathStack)
 
 }
 
-func printChildrenPairs(nd Node) {
+func printChildrenPairs(nd node.Node) {
 	for k, v := range nd.Children {
 		var formattedName string
 		if v.Command == "" {

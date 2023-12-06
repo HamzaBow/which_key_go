@@ -1,9 +1,17 @@
-package node
+package prompt
 
 import (
 	"fmt"
 	"which_key_go/styles"
+	"which_key_go/util"
 )
+
+func promptPrepareAndPrintHeader() {
+	util.ClearTerminal()
+	printPath(pathInfo)
+	util.PrintDivider()
+
+}
 
 func printPath(path []PathElement) {
 	if len(path) == 0 {
