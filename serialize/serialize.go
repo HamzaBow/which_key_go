@@ -8,7 +8,7 @@ import (
 	"which_key_go/node"
 )
 
-func serializeTree(rt node.Node) {
+func serializeTree(tree node.Node) {
 
 	f, err := os.Create("tree.json")
 	if err != nil {
@@ -17,7 +17,7 @@ func serializeTree(rt node.Node) {
 	defer f.Close()
 
 	// bts, err := json.Marshal(rt)
-	bts, err := json.MarshalIndent(rt, "", "\t")
+	bts, err := json.MarshalIndent(tree, "", "\t")
 
 	if err != nil {
 		log.Fatal(err)
