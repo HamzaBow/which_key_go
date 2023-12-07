@@ -11,16 +11,20 @@ import (
 
 var filenameWithoutExtension = "tree"
 
-func SerializeTree(tree node.Node) {
+func SerializeTree(tree node.Node, minified bool) {
 
 	f, err := os.Create(filenameWithoutExtension + ".json")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer f.Close()
+	var bts []byte
 
-	// bts, err := json.Marshal(rt)
-	bts, err := json.MarshalIndent(tree, "", "\t")
+	if minified {
+		bts, err = json.Marshal(tree)
+	} else {
+		bts, err = json.MarshalIndent(tree, "", "\t")
+	}
 
 	if err != nil {
 		log.Fatal(err)
