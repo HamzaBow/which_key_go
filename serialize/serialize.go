@@ -11,7 +11,7 @@ import (
 
 var filenameWithoutExtension = "tree"
 
-func serializeTree(tree node.Node) {
+func SerializeTree(tree node.Node) {
 
 	f, err := os.Create(filenameWithoutExtension + ".json")
 	if err != nil {
