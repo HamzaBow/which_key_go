@@ -6,12 +6,10 @@ import (
 	"os"
 	"which_key_go/node"
 	"which_key_go/prompt"
-	"which_key_go/serialize"
 )
 
 func main() {
 	rt := startUp()
-	serialize.SerializeTreeToGob(*rt)
 	prompt.PromptPrefixNode(*rt, []*node.Node{})
 }
 
