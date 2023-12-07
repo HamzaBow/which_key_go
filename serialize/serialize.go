@@ -1,6 +1,7 @@
 package serialize
 
 import (
+	"encoding/gob"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -32,4 +33,20 @@ func serializeTree(tree node.Node) {
 	}
 
 	fmt.Println("done")
+}
+
+func SerializeTreeToGob(tree node.Node) error {
+	file, err := os.Create(filenameWithoutExtension + ".gob")
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	encoder := gob.NewEncoder(file)
+	err = encoder.Encode(tree)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
