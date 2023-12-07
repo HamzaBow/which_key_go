@@ -8,9 +8,11 @@ import (
 	"which_key_go/node"
 )
 
+var filenameWithoutExtension = "tree"
+
 func serializeTree(tree node.Node) {
 
-	f, err := os.Create("tree.json")
+	f, err := os.Create(filenameWithoutExtension + ".json")
 	if err != nil {
 		log.Fatal(err)
 	}
